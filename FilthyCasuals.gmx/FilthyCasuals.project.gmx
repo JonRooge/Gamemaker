@@ -19,7 +19,7 @@
     <object>objects\obj_boss</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\cam_room</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
