@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>gamepad = instance_number(player_obj) - 1;
 basicCool = 0;
+hp = 3;
 
 p_scale = 0.2;
 p_spr = player_spr;
@@ -58,33 +59,47 @@ image_yscale = p_scale;
           <argument>
             <kind>1</kind>
             <string>//Movement
-lh = gamepad_axis_value(gamepad, gp_axislh);
-lv = gamepad_axis_value(gamepad, gp_axislv);
-lc = abs(lh) + abs(lv);
+if(hp &gt;= 1) {
+    lh = gamepad_axis_value(gamepad, gp_axislh);
+    lv = gamepad_axis_value(gamepad, gp_axislv);
+    lc = abs(lh) + abs(lv);
+    
+    if(hspeed &lt;= 0.05 &amp;&amp; hspeed &gt;= -0.05) hspeed = 0;
+    else if(hspeed &gt; 0.05) hspeed -= 0.05;
+    else hspeed += 0.05;
+    
+    if(vspeed &lt;= 0.05 &amp;&amp; vspeed &gt;= -0.05) vspeed = 0;
+    else if(vspeed &gt; 0.05) vspeed -= 0.05;
+    else vspeed += 0.05;
+    
+    image_angle %= 360;
+    if(image_angle &lt; 0) image_angle += 360;
+    td = image_angle;
+    
+    if(lc &gt; 0.2) {
+        hspeed += lh;
+        vspeed += lv;
+        td = point_direction(x, y, x + lh, y + lv);
+        
+        if(hp == 2) {
+            p_spr = hp2_spr;
+        } else if(hp == 1) {
+            p_spr = hp1_spr;
+        } else {
+            p_spr = player_spr;
+        }
+    }
+    
+    if(hspeed == 0 &amp;&amp; vspeed == 0) {
+        p_spr = playerStill_spr;
+    }
 
-if(hspeed &lt;= 0.05 &amp;&amp; hspeed &gt;= -0.05) hspeed = 0;
-else if(hspeed &gt; 0.05) hspeed -= 0.05;
-else hspeed += 0.05;
+    dif = angleDif_scr(td, image_angle);
 
-if(vspeed &lt;= 0.05 &amp;&amp; vspeed &gt;= -0.05) vspeed = 0;
-else if(vspeed &gt; 0.05) vspeed -= 0.05;
-else vspeed += 0.05;
-
-image_angle %= 360;
-if(image_angle &lt; 0) image_angle += 360;
-td = image_angle;
-
-if(lc &gt; 0.2) {
-    hspeed += lh;
-    vspeed += lv;
-    td = point_direction(x, y, x + lh, y + lv);
+    if(dif &gt;= 10) image_angle -= 10;
+    else if(dif &lt;= -10) image_angle += 10;
+    else if(dif != 0) image_angle = td;
 }
-
-dif = angleDif_scr(td, image_angle);
-
-if(dif &gt;= 10) image_angle -= 10;
-else if(dif &lt;= -10) image_angle += 10;
-else if(dif != 0) image_angle = td;
 
 //Shoot
 if(basicCool &gt; 0) basicCool++;
@@ -99,92 +114,30 @@ if(gamepad_button_check(gamepad, gp_face1) &amp;&amp; basicCool == 0) {
     basicCool++;
 }
 
+//Hit
+if(hp &gt; 0) {
+    for (i = 0; i &lt; instance_number(invaderShot_obj); i += 1) {
+        bullet = instance_find(invaderShot_obj,i);
+        if(place_meeting(x, y, bullet)) {
+            instance_create(bullet.x, bullet.y, hit_obj);
+            instance_destroy(bullet);
+            
+            hp--;
+            p_ind = 0;
+            
+            if(hp == 2) {
+                p_spr = hp2_spr;
+            } else if(hp == 1) {
+                p_spr = hp1_spr;
+            } else if(hp == 0) {
+                p_spr = dead_spr;
+            }
+        }
+    }
+}
+
 //show_debug_message(dif);
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="D_portal">
-      <action>
-        <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>9</kind>
-            <script>go_room</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>'down'</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="U_portal">
-      <action>
-        <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>9</kind>
-            <script>go_room</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>'up'</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>
@@ -273,6 +226,48 @@ if(gamepad_button_check(gamepad, gp_face1) &amp;&amp; basicCool == 0) {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="player_obj">
+      <action>
+        <libid>1</libid>
+        <id>601</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_execute_script</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>9</kind>
+            <script>go_room</script>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>'up'</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -295,9 +290,14 @@ if(p_pause == 5) {
     p_pause = 0;
     p_ind++;
 }
-if(p_ind &gt;= sprite_get_number(p_spr)) p_ind = 0;
+if(p_ind &gt;= sprite_get_number(p_spr)) {
+    if(hp == 0) {
+        hp--;
+    }
+    p_ind = 0;
+}
 
-draw_sprite_ext(p_spr, p_ind, x, y, p_scale, p_scale, image_angle, c_blue, 1);
+if(hp &gt;= 0) draw_sprite_ext(p_spr, p_ind, x, y, p_scale, p_scale, image_angle, p_color, 1);
 </string>
           </argument>
         </arguments>
