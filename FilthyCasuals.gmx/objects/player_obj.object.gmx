@@ -25,13 +25,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (gp_axislh &gt; 0){
+            <string>/*if (gp_axislh &gt; 0){
     hspeed = 10;
 }
 if (gp_axislh &lt;= 0){
     hspeed = -10;
+}*/
+
+lh = gamepad_axis_value(0, gp_axislh);
+lv = gamepad_axis_value(0, gp_axislv);
+lc = abs(lh) + abs(lv);
+
+if(hspeed &lt;= 0.05 &amp;&amp; hspeed &gt;= -0.05) hspeed = 0;
+else if(hspeed &gt; 0.05) hspeed -= 0.05;
+else hspeed += 0.05;
+
+if(vspeed &lt;= 0.05 &amp;&amp; vspeed &gt;= -0.05) vspeed = 0;
+else if(vspeed &gt; 0.05) vspeed -= 0.05;
+else vspeed += 0.05;
+
+image_angle %= 360;
+if(image_angle &lt; 0) image_angle += 360;
+td = image_angle;
+
+if(lc &gt; 0.2) {
+    hspeed += lh;
+    vspeed += lv;
+    td = point_direction(x, y, x + lh, y + lv);
 }
-show_debug_message(gp_axislh);
+
+dif = angleDif_scr(td, image_angle);
+
+if(dif &gt;= 10) image_angle -= 10;
+else if(dif &lt;= -10) image_angle += 10;
+else if(dif != 0) image_angle = td;
+
+show_debug_message(dif);
 </string>
           </argument>
         </arguments>

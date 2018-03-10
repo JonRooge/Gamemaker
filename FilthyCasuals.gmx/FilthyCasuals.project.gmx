@@ -10,9 +10,11 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\angleDif_scr.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\player_obj</object>
-    <object>objects\control_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
