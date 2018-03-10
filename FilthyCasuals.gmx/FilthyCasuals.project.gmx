@@ -7,12 +7,16 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\player_spr</sprite>
+    <sprite>sprites\boss_spr</sprite>
+    <sprite>sprites\cam_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\player_obj</object>
-    <object>objects\control_obj</object>
+    <object>objects\object2</object>
+    <object>objects\camera_obj</object>
+    <object>objects\obj_boss</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
