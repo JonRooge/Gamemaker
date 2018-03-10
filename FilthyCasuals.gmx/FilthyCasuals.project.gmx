@@ -14,6 +14,8 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\angleDif_scr.gml</script>
+    <script>scripts\add_room.gml</script>
+    <script>scripts\go_room.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\player_obj</object>
@@ -22,9 +24,21 @@
     <object>objects\createPlayers_obj</object>
     <object>objects\basicBullet_obj</object>
     <object>objects\invader_obj</object>
+    <object>objects\control_obj</object>
+    <object>objects\L_portal</object>
+    <object>objects\obj_wall1</object>
+    <object>objects\object2</object>
+    <object>objects\R_portal</object>
+    <object>objects\world_control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\cam_room</room>
+    <room>rooms\room0</room>
+    <room>rooms\room1</room>
+    <room>rooms\room2</room>
+    <room>rooms\room3</room>
+    <room>rooms\room4</room>
+    <room>rooms\room5</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
