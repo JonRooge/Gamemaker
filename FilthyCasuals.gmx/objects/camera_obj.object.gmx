@@ -26,15 +26,19 @@
           <argument>
             <kind>1</kind>
             <string>//Stay in the middle of the two players
-x = mean(player_obj.x,obj_boss.x);
-y = mean(player_obj.y,obj_boss.y);
+plr1 = ds_list_find_value(playerList, 0);
+
+//show_debug_message(ds_list_find_value(playerList, 0));
+
+x = mean(plr1.x,center_screen.x);
+y = mean(plr1.y,center_screen.y);
 
 //view_xview[0] = mean(player_obj.x,obj_boss.x) - (view_wview[0]/2)
 //view_yview[0] = mean(player_obj.x,obj_boss.y) - (view_hview[0]/2)
 
 
 
-view_wview[0] = distance_to_point(player_obj.x, 0) + distance_to_point(obj_boss.x, 0) + 100;
+view_wview[0] = distance_to_point(player_obj.x, 0) + distance_to_point(center_screen.x, 0) + 100;
 view_hview[0] = view_wview[0];
 
 //camera_set_view_size(view_camera[0], view_wport[0], view_hport[0]);

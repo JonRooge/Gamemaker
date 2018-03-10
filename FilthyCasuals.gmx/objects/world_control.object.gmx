@@ -36,6 +36,7 @@ globalvar cur_roomy;
 
 globalvar currentRoom;
     currentRoom = 'room0';
+    //room_goto(currentRoom);
 
 // structure init
 globalvar map;
