@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\player_spr</sprite>
+    <sprite>sprites\basicBullet_spr</sprite>
+    <sprite>sprites\sprite2</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -15,9 +17,11 @@
   </scripts>
   <objects name="objects">
     <object>objects\player_obj</object>
-    <object>objects\object2</object>
     <object>objects\camera_obj</object>
     <object>objects\obj_boss</object>
+    <object>objects\createPlayers_obj</object>
+    <object>objects\basicBullet_obj</object>
+    <object>objects\invader_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\cam_room</room>

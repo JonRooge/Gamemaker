@@ -25,13 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>gamepad = instance_number(player_obj) - 1;
-basicCool = 0;
-
-p_scale = 0.2;
-p_spr = player_spr;
-p_ind = 0;
-p_pause = 0;
+            <string>if(!gamepad_is_connected(1)) instance_destroy(id);
 </string>
           </argument>
         </arguments>
@@ -54,9 +48,15 @@ p_pause = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Movement
-lh = gamepad_axis_value(gamepad, gp_axislh);
-lv = gamepad_axis_value(gamepad, gp_axislv);
+            <string>/*if (gp_axislh &amp;gt; 0){
+    hspeed = 10;
+}
+if (gp_axislh &amp;lt;= 0){
+    hspeed = -10;
+}*/
+
+lh = gamepad_axis_value(1, gp_axislh);
+lv = gamepad_axis_value(1, gp_axislv);
 lc = abs(lh) + abs(lv);
 
 if(hspeed &lt;= 0.05 &amp;&amp; hspeed &gt;= -0.05) hspeed = 0;
@@ -83,50 +83,7 @@ if(dif &gt;= 10) image_angle -= 10;
 else if(dif &lt;= -10) image_angle += 10;
 else if(dif != 0) image_angle = td;
 
-//Shoot
-if(basicCool &gt; 0) basicCool++;
-if(basicCool == 4) basicCool = 0;
-
-if(gamepad_button_check(gamepad, gp_face1) &amp;&amp; basicCool == 0) {
-    bullet = instance_create(x, y, basicBullet_obj);
-    variance = random_range(-5, 5);
-    bullet.image_angle = image_angle + variance;
-    bullet.direction = image_angle + variance;
-    bullet.speed += abs(hspeed) + abs(vspeed);
-    basicCool++;
-}
-
 //show_debug_message(dif);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>p_pause++;
-if(p_pause == 5) {
-    p_pause = 0;
-    p_ind++;
-}
-if(p_ind &gt;= sprite_get_number(p_spr)) p_ind = 0;
-
-draw_sprite_ext(p_spr, p_ind, x, y, p_scale, p_scale, image_angle, c_blue, 1);
 </string>
           </argument>
         </arguments>
