@@ -8,7 +8,21 @@
   <sprites name="sprites">
     <sprite>sprites\player_spr</sprite>
     <sprite>sprites\basicBullet_spr</sprite>
-    <sprite>sprites\sprite2</sprite>
+    <sprite>sprites\invader_spr</sprite>
+    <sprite>sprites\invaderShot_spr</sprite>
+    <sprite>sprites\hp1_spr</sprite>
+    <sprite>sprites\hp2_spr</sprite>
+    <sprite>sprites\dead_spr</sprite>
+    <sprite>sprites\playerStill_spr</sprite>
+    <sprite>sprites\bitExplosion_spr</sprite>
+    <sprite>sprites\hit_spr</sprite>
+    <sprite>sprites\snake_spr</sprite>
+    <sprite>sprites\asteroid1_spr</sprite>
+    <sprite>sprites\asteroid2_spr</sprite>
+    <sprite>sprites\asteroid3_spr</sprite>
+    <sprite>sprites\asteroid4_spr</sprite>
+    <sprite>sprites\asteroid5_spr</sprite>
+    <sprite>sprites\asteroidExplosion_spr</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -23,6 +37,7 @@
     <object>objects\obj_boss</object>
     <object>objects\createPlayers_obj</object>
     <object>objects\basicBullet_obj</object>
+    <object>objects\invaderShot_obj</object>
     <object>objects\invader_obj</object>
     <object>objects\control_obj</object>
     <object>objects\L_portal</object>
@@ -30,6 +45,15 @@
     <object>objects\object2</object>
     <object>objects\R_portal</object>
     <object>objects\world_control</object>
+    <object>objects\D_portal</object>
+    <object>objects\U_portal</object>
+    <object>objects\center_screen</object>
+    <object>objects\hit_obj</object>
+    <object>objects\bitExplosion_obj</object>
+    <object>objects\asteroidExplosion_obj</object>
+    <object>objects\smallSnake_obj</object>
+    <object>objects\bigSnake_obj</object>
+    <object>objects\smallAsteroid_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\cam_room</room>
