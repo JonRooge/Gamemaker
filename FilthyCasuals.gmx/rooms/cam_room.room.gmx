@@ -54,12 +54,12 @@
     <instance objName="obj_boss" x="480" y="64" name="inst_AD45AFFE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="camera_obj" x="0" y="0" name="inst_DDFB8EA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="createPlayers_obj" x="352" y="256" name="inst_041132F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="invader_obj" x="96" y="32" name="inst_3F1364F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="invader_obj" x="256" y="32" name="inst_FCF23FF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="invader_obj" x="672" y="32" name="inst_F37E963B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="invader_obj" x="512" y="32" name="inst_5A56ECD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="world_control" x="32" y="0" name="inst_3EC33CFA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="center_screen" x="352" y="224" name="inst_020BB86D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="smallSnake_obj" x="288" y="416" name="inst_87B36494" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="180"/>
+    <instance objName="smallSnake_obj" x="640" y="256" name="inst_67F2B7D5" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="270"/>
+    <instance objName="smallSnake_obj" x="64" y="160" name="inst_15D6F783" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="90"/>
+    <instance objName="smallSnake_obj" x="416" y="32" name="inst_94D278D0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

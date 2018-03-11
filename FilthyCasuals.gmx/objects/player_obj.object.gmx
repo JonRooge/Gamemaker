@@ -134,6 +134,25 @@ if(hp &gt; 0) {
             }
         }
     }
+    
+    for (i = 0; i &lt; instance_number(smallAsteroid_obj); i += 1) {
+        rock = instance_find(smallAsteroid_obj,i);
+        if(place_meeting(x, y, rock)) {
+            instance_create(rock.x, rock.y, hit_obj);
+            instance_destroy(rock);
+            
+            hp--;
+            p_ind = 0;
+            
+            if(hp == 2) {
+                p_spr = hp2_spr;
+            } else if(hp == 1) {
+                p_spr = hp1_spr;
+            } else if(hp == 0) {
+                p_spr = dead_spr;
+            }
+        }
+    }
 }
 
 //show_debug_message(dif);
