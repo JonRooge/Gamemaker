@@ -34,12 +34,12 @@ player1.p_color = c_white;
 ds_list_add(playerList, player1);
 if(gamepad_is_connected(1)) {
     player2 = instance_create(x + 200, y - 200, player_obj);
-    player2.p_color = c_blue;
+    player2.p_color = c_orange;
     ds_list_add(playerList, player2);
 }
 if(gamepad_is_connected(2)) {
-    player3 = instance_create(x + 200, y + 200, player_obj);
-    player3.p_color = c_green;
+    player3 = instance_create(x - 200, y - 200, player_obj);
+    player3.p_color = c_red;
     ds_list_add(playerList, player3);
 }
 if(gamepad_is_connected(3)) {

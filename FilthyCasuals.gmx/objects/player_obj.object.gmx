@@ -28,6 +28,7 @@
             <string>gamepad = instance_number(player_obj) - 1;
 basicCool = 0;
 snakeCool = 0;
+tetCool = 0;
 hp = 3;
 done = false;
 
@@ -111,6 +112,8 @@ if(basicCool &gt; 0) basicCool++;
 if(basicCool == 4) basicCool = 0;
 if(snakeCool &gt; 0) snakeCool++;
 if(snakeCool == 40) snakeCool = 0;
+if(tetCool &gt; 0) tetCool++;
+if(tetCool == 40) tetCool = 0;
 
 if(hp &gt;= 1) {
     if(gamepad_button_check(gamepad, gp_face1) &amp;&amp; basicCool == 0) {
@@ -130,6 +133,11 @@ if(hp &gt;= 1) {
         snake.direction = variance * 90 - 90;
         //snake.player = gamepad;
         snakeCool++;
+    }
+    
+    if(gamepad_button_check(gamepad, gp_face4) &amp;&amp; tetCool == 0){
+        tet = instance_create(x,y, obj_boss);
+        tetCool++;
     }
 }
 

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawnPause = 0;
+            <string>spawnPause = irandom_range(0, 499);
 </string>
           </argument>
         </arguments>
@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>spawnPause++;
 
-if(spawnPause &gt;= 100) {
+if(spawnPause &gt;= 500) {
     instance_create(x, y, invader_obj);
     spawnPause = 0;
 }

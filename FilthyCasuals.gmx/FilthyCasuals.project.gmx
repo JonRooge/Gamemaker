@@ -23,8 +23,22 @@
     <sprite>sprites\asteroid4_spr</sprite>
     <sprite>sprites\asteroid5_spr</sprite>
     <sprite>sprites\asteroidExplosion_spr</sprite>
+    <sprite>sprites\tet_portal_spr</sprite>
+    <sprite>sprites\tet1_spr</sprite>
+    <sprite>sprites\tet2_spr</sprite>
+    <sprite>sprites\tet3_spr</sprite>
+    <sprite>sprites\tet4_spr</sprite>
+    <sprite>sprites\tet5_spr</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+    <background>background\background1</background>
+    <background>background\background2</background>
+    <background>background\background3</background>
+    <background>background\background4</background>
+    <background>background\background5</background>
+    <background>background\background6</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\angleDif_scr.gml</script>
@@ -54,6 +68,13 @@
     <object>objects\smallSnake_obj</object>
     <object>objects\bigSnake_obj</object>
     <object>objects\smallAsteroid_obj</object>
+    <object>objects\invaderSpawner_obj</object>
+    <object>objects\tet_portal_obj</object>
+    <object>objects\tet1_obj</object>
+    <object>objects\tet2_obj</object>
+    <object>objects\tet3_obj</object>
+    <object>objects\tet4_obj</object>
+    <object>objects\tet5_obj</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\cam_room</room>

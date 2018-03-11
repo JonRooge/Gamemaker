@@ -57,25 +57,36 @@ view_vborder = view_wview/2;
 show_debug_message(view_hport);
 
 if (ds_list_size(playerList) == 1){
-    x = mean(ds_list_find_value(playerList, 0).x);
-    y = mean(ds_list_find_value(playerList, 0).y);
+    x = ds_list_find_value(playerList, 0).x;
+    y = ds_list_find_value(playerList, 0).y;
+    view_wview = 200;
+    view_hview = view_wview * .65;
 } else
 if (ds_list_size(playerList) == 2){
     x = mean(ds_list_find_value(playerList, 0).x, ds_list_find_value(playerList, 1).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y);
+    y = mean(ds_list_find_value(playerList, 0).y, ds_list_find_value(playerList, 1).y);
+    view_wview = 200 + abs(ds_list_find_value(playerList, 0).x - ds_list_find_value(playerList, 1).x);
 } else
 if (ds_list_size(playerList) == 3){
-    x = mean(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y);
+    x = mean(min(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x),
+        max(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x)
+    );
+    y = mean(min(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y),
+        max(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y)
+    );
+    view_wview = 200 + abs(min(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x) - 
+        max(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x));
 } else if (ds_list_size(playerList) == 4){
-    x = mean(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y,ds_list_find_value(playerList, 3).y);
+    x = mean(min(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x),
+        max(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x)
+    );
+    y = mean(min(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y,ds_list_find_value(playerList, 3).y),
+        max(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y,ds_list_find_value(playerList, 3).y)
+    );
+    view_wview = 200 + abs(min(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x) - 
+        max(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x));
 }
 
-
-
-
-view_wview = 200 + (distance_to_object(player_obj) * 3);
 view_hview = view_wview * .65;
 
 view_hborder = view_hview/2;
