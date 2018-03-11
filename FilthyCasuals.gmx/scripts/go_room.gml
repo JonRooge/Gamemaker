@@ -14,7 +14,7 @@ switch(dir){
         else {
             room_goto(asset_get_index(map[? string(cur_roomx+1) + string(cur_roomy)]));
         }
-        player_obj.y = D_portal.y + 100;
+        player_obj.y = D_portal.y - 100;
         cur_roomx += 1;
         break;
     case 'down':
@@ -26,7 +26,7 @@ switch(dir){
         else {
             room_goto(asset_get_index(map[? string(cur_roomx-1) + string(cur_roomy)]))
         }
-        player_obj.y = U_portal.y - 100;
+        player_obj.y = U_portal.y + 150;
         cur_roomx -= 1;
         break;
     case 'left':
@@ -52,6 +52,7 @@ switch(dir){
             room_goto(asset_get_index(map[? string(cur_roomx) + string(cur_roomy+1)]));
         }
         cur_roomy += 1;
-        player_obj.x = L_portal.x + 100;
+        player_obj.x = L_portal.x + 150;
         break;
 }
+player_obj.speed = 0;

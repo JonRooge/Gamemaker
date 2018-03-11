@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -28,6 +28,7 @@
             <string>globalvar playerList;
 playerList = ds_list_create();
 
+
 player1 = instance_create(x + 20, y + 20, player_obj);
 ds_list_add(playerList, player1);
 if(gamepad_is_connected(1)) {
@@ -43,7 +44,6 @@ if(gamepad_is_connected(3)) {
     ds_list_add(playerList, player4);
 }
 
-instance_destroy(id);
 </string>
           </argument>
         </arguments>
