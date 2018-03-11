@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>-1</persistent>
+  <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,12 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>view_hview = 300;
-view_wview = 300;
-view_hborder = view_hview/2;
-view_vborder = view_wview/2;
-
-
+            <string>spawnPause = 0;
 </string>
           </argument>
         </arguments>
@@ -53,35 +48,12 @@ view_vborder = view_wview/2;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
-show_debug_message(view_hport);
+            <string>spawnPause++;
 
-if (ds_list_size(playerList) == 1){
-    x = mean(ds_list_find_value(playerList, 0).x);
-    y = mean(ds_list_find_value(playerList, 0).y);
-} else
-if (ds_list_size(playerList) == 2){
-    x = mean(ds_list_find_value(playerList, 0).x, ds_list_find_value(playerList, 1).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y);
-} else
-if (ds_list_size(playerList) == 3){
-    x = mean(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y);
-} else if (ds_list_size(playerList) == 4){
-    x = mean(ds_list_find_value(playerList, 0).x,ds_list_find_value(playerList, 1).x,ds_list_find_value(playerList, 2).x,ds_list_find_value(playerList, 3).x);
-    y = mean(ds_list_find_value(playerList, 0).y,ds_list_find_value(playerList, 1).y,ds_list_find_value(playerList, 2).y,ds_list_find_value(playerList, 3).y);
+if(spawnPause &gt;= 100) {
+    instance_create(x, y, invader_obj);
+    spawnPause = 0;
 }
-
-
-
-
-view_wview = 200 + (distance_to_object(player_obj) * 3);
-view_hview = view_wview * .65;
-
-view_hborder = view_hview/2;
-view_vborder = view_wview/2;
-
-//camera_set_view_size(view_camera[0], view_wport[0], view_hport[0]);
 </string>
           </argument>
         </arguments>
